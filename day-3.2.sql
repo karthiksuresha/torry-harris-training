@@ -1,0 +1,56 @@
+create table Employee(EMPNO int(5),ENAME varchar(30),JOB varchar(30),HIREDATE varchar(15),
+						MGR varchar(5),SAL int(5),COMM varchar(5),DEPTNO int(5));
+insert into Employee values (7369,"SMITH","CLERK","17-DEC-80",7902,800," ",20);
+insert into Employee values (7499,"ALLEN","SALESMAN","20-FEB-81",7698,1600,300,30);
+insert into Employee values (7521,"WARD","SALESMAN","22-FEB-81",7698,1250,500,30);
+insert into Employee values (7566,"JONES","MANAGER","02-APR-81",7839,2975," ",20);
+insert into Employee values (7654,"MARTIN","SALESMAN","28-SEP-81",7698,1250,1400,30);
+insert into Employee values (7698,"BLAKE","MANAGER","01-MAY-81",7839,2850," ",30);
+insert into Employee values (7782,"CLARK","MANAGER","19-JUN-81",7839,2450," ",10);
+insert into Employee values (7788,"SCOTT","ANALYST","19-APR-87",7566,3000," ",20);
+insert into Employee values (7839,"KING","PRESIDENT","17-NOV-81"," ",5000," ",10);
+insert into Employee values (7844,"TURNER","SALESMAN","08-SEP-81",7698,1500,0,30);
+insert into Employee values (7876,"ADAMS","CLERK","23-MAY-87",7788,1100," ",20);
+insert into Employee values (7900,"JAMES","CLERK","03-DEC-81",7698,950," ",30);
+insert into Employee values (7902,"FORD","ANALYST","03-DEC-81",7566,3000," ",20);
+insert into Employee values (7934,"MILLER","CLERK","23-JAN-82",7782,1300," ",10);
+
+select* from Employee where DEPTNO=30;
+select ENAME,EMPNO,DEPTNO from Employee where JOB="CLERK";
+select DEPTNO,ENAME from Employee where DEPTNO>20;
+select* from Employee where COMM>SAL;
+select* from Employee where COMM>(0.6*SAL);
+select ENAME,JOB,SAL from  Employee where DEPTNO=20 and (SAL+COMM)>2000;
+select* from Employee where DEPTNO=30 and SAL>1500;
+select* from Employee where JOB in ('MANAGER','PRESIDENT');
+select* from Employee where JOB="MANAGER" and DEPTNO!=30;
+select* from Employee where JOB in ('MANAGER','CLERK') and DEPTNO=10;
+select* from Employee where JOB="MANAGER" or (JOB="CLERK" and DEPTNO=20);
+select* from Employee where (JOB="MANAGER" and DEPTNO=10) or (JOB="CLERK" and DEPTNO=20) 
+							or (JOB not in ('MANAGER','CLERK') and SAL>=2000);
+select ENAME from Employee where (JOB not in ('MANAGER','CLERK') and DEPTNO=20);
+select ENAME from Employee where (SAL+COMM) between 1200 and 1400;
+select* from Employee where JOB in ('CLERK','ANALYSTS','SALESMAN');
+select* from Employee where JOB not in ('CLERK','ANALYSTS','SALESMAN');
+select* from Employee where COMM=" ";
+select JOB from Employee where COMM>=0 group by JOB; 
+select* from Employee where COMM<100;
+select*,SAL+250 from Employee;
+select* from Employee where (SAL+COMM)>2000;
+select ENAME from Employee where ENAME like ('M%') or ENAME like ('%M');
+select* from Employee where ENAME like ('%m%') or ENAME like ('%M%');
+select ENAME from Employee where length(ENAME)=15 and ENAME like '__R%';
+select* from Employee where SUBSTR(hiredate, 4, 3)='FEB';
+select* from Employee where SUBSTR(hiredate, 1, 2)=31;
+select* from Employee where (121 - SUBSTR(hiredate, 8, 9))>2;
+select* from Employee where ENAME="MANAGER" and SUBSTR(hiredate, 8, 9)=03;
+select concat(concat(ENAME,'_'),JOB) from Employee;
+select rpad(ENAME,15,' ' ) from Employee;
+select rpad(ENAME,15,'*' ) from Employee;
+select* from Employee where ENAME not like 'A%';
+select* from Employee where ENAME not like '%R';
+select concat(concat(left(ENAME,3)),right(ENAME,3)) from Employee;
+select Ename from Employee where 'A'='a';
+
+select* from Employee;
+drop table Employee;
