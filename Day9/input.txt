@@ -1,2 +1,0 @@
-This is a File for File Demo.
-Welcome to JAVA IO.

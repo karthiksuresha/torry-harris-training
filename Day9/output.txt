@@ -1,2 +1,0 @@
-This is an output file.
-This contains data output.
